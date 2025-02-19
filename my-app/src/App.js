@@ -63,14 +63,19 @@ export default function App() {
       <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
         {/* Main content section */}
         <Container maxWidth="xl">
-          <Box display="flex" justifyContent="space-between" alignItems="center" py={2} px={4}>
-            <img src={logo} alt="Stimma Logo" style={{ width: '300px', height: 'auto' }} />
-            <Box>
-              {/* <Button color="inherit">Contact</Button>
-                          <Button variant="contained" sx={{ ml: 2, borderRadius: '20px' }}>
-                              How it works
-                          </Button> */}
-            </Box>
+          <Box display="flex" justifyContent="space-between" alignItems="center" py={2} px={{ xs: 0, md: 4 }}>
+            <img
+              src={logo}
+              alt="Stimma Logo"
+              style={{
+                width: '300px',
+                height: 'auto',
+                marginLeft: { xs: '0', md: 'inherit' }
+              }}
+              sx={{
+                display: { xs: 'none', sm: 'block' }
+              }}
+            />
           </Box>
         </Container>
 
@@ -132,7 +137,8 @@ export default function App() {
                     '&:hover': {
                       bgcolor: '#2c3e50'
                     },
-                    width: { xs: '100%', sm: 'auto' }
+                    width: { xs: '100%', sm: 'auto' },
+                    mb: { xs: 10, sm: 0 }
                   }}
                 >
                   {isSubmitting ? 'JOINING...' : 'JOIN THE WAITLIST'}
@@ -140,7 +146,7 @@ export default function App() {
               </Box>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box sx={{ position: 'relative', mb: -16 }}>
+              <Box sx={{ position: 'relative', mb: -16, display: { xs: 'none', sm: 'block' } }}>
                 <img
                   src={iphone2}
                   alt="iPhone App Demo"
@@ -169,7 +175,7 @@ export default function App() {
               mb: 2
             }}
           >
-            Features
+            Why Try Stimma
           </Typography>
           <Typography
             variant="body1"
@@ -182,7 +188,6 @@ export default function App() {
               fontSize: '1.1rem'
             }}
           >
-            These are just a few features you'll get using Stimma.
           </Typography>
 
           <Grid container spacing={4}>
@@ -190,19 +195,19 @@ export default function App() {
               {
                 icon: icon1,
                 title: 'Stop overpaying',
-                description: 'ISPs are crafty. They raise your bill—sometimes by more than $50 per month—and hope you won\'t notice. You could always to call the customer service line and haggle for a better deal...',
+                description: 'ISPs are crafty. They raise your bill—sometimes by more than $50 per month—and hope you won\'t notice.',
                 bgColor: '#FFE6E6'
               },
               {
                 icon: icon2,
-                title: 'No savings, no fee',
+                title: 'No more waiting on hold',
                 description: 'Calling your ISP usually means waiting on hold for hours and hours. Spare yourself and let us deal with your ISP\'s nightmarish customer service system.',
                 bgColor: '#E6F4F1'
               },
               {
                 icon: icon3,
                 title: 'Your AI Negotiator',
-                description: 'Nope. We\'re finally leveraging AI to benefit consumers instead of businesses. Our AI agent will do your dirty work.',
+                description: 'We\'re finally leveraging AI to benefit consumers instead of businesses. Our AI agent will do your dirty work.',
                 bgColor: '#FFF6E6'
               }
             ].map((feature, index) => (
