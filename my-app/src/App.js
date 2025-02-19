@@ -293,7 +293,8 @@ export default function App() {
             transform: 'translate(-50%, -50%)',
             width: '100%',
             maxWidth: '800px',
-            px: 2
+            px: 2,
+            display: { xs: 'none', sm: 'block' }
           }}>
             <Box display="flex" gap={1} sx={{
               flexDirection: { xs: 'column', sm: 'row' }
