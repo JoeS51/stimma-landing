@@ -270,68 +270,6 @@ export default function App() {
           </Grid>
         </Container>
 
-        {/* <Box sx={{
-                  width: '100%',
-                  mb: 15,
-                  bgcolor: '#D7DFFF',
-                  py: 12,
-                  px: { xs: 2, md: 0 }
-              }}>
-                  <Container maxWidth="md">
-                      <Box sx={{ textAlign: 'left', maxWidth: '600px' }}>
-                          <Typography
-                              variant="h2"
-                              fontWeight="bold"
-                              gutterBottom
-                              sx={{
-                                  fontSize: { xs: '2.5rem', md: '3.5rem' },
-                                  color: '#1E2A37',
-                                  mb: 3
-                              }}
-                          >
-                              Start Saving with Stimma Today!
-                          </Typography>
-                          <Typography
-                              variant="body1"
-                              sx={{
-                                  mb: 4,
-                                  fontSize: '1.25rem',
-                                  color: '#4B5563'
-                              }}
-                          >
-                              Get notified when your bill is reduced and start saving instantly!
-                          </Typography>
-                          <Box display="flex" gap={1} mt={4} sx={{
-                              flexDirection: { xs: 'column', sm: 'row' }
-                          }}>
-                              <StyledTextField
-                                  placeholder="Email Address"
-                                  variant="outlined"
-                                  sx={{ flex: 1 }}
-                              />
-                              <Button
-                                  variant="contained"
-                                  startIcon={<span>🚀</span>}
-                                  sx={{
-                                      borderRadius: '30px',
-                                      height: '56px',
-                                      whiteSpace: 'nowrap',
-                                      px: 4,
-                                      bgcolor: '#1E2A37',
-                                      '&:hover': {
-                                          bgcolor: '#2c3e50'
-                                      },
-                                      width: { xs: '100%', sm: 'auto' }
-                                  }}
-                              >
-                                  JOIN THE WAITLIST
-                              </Button>
-                          </Box>
-                      </Box>
-                  </Container>
-              </Box> */}
-
-        {/* Banner section */}
         <Box sx={{
           position: 'relative',
           display: 'flex',
@@ -394,17 +332,20 @@ export default function App() {
           <Box sx={{
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            bgcolor: '#F8FAFC',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            maxWidth: '900px',
+            mx: 'auto'
           }}>
             <img
               src={testimonial}
               alt="Customer Testimonial"
               style={{
                 width: '100%',
-                maxWidth: '800px',
                 height: 'auto',
-                borderRadius: '12px',
-                boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)'
+                display: 'block'
               }}
             />
           </Box>
