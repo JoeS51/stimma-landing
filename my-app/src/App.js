@@ -17,6 +17,7 @@ import testimonial from './assets/Testimonials.png';
 import logo2 from './assets/logo_bottom.png';
 import iphone2 from './assets/iphone2.png';
 import banner from './assets/banner.png';
+import banner2 from './assets/banner3.png'
 import { useState } from 'react';
 
 const StyledTextField = styled(TextField)({
@@ -141,7 +142,7 @@ export default function App() {
                     mb: { xs: 10, sm: 0 }
                   }}
                 >
-                  {isSubmitting ? 'JOINING...' : 'JOIN THE WAITLIST'}
+                  {isSubmitting ? 'JOINING...' : '🚀 TRY IT FREE'}
                 </Button>
               </Box>
             </Grid>
@@ -284,7 +285,7 @@ export default function App() {
           mt: 20
         }}>
           <img
-            src={banner}
+            src={banner2}
             alt="Banner"
             style={{
               width: '100%',
@@ -327,7 +328,7 @@ export default function App() {
                   width: { xs: '100%', sm: 'auto' }
                 }}
               >
-                {isSubmitting ? 'JOINING...' : 'JOIN THE WAITLIST'}
+                {isSubmitting ? 'JOINING...' : '🚀 TRY IT FREE'}
               </Button>
             </Box>
           </Box>
@@ -412,7 +413,7 @@ export default function App() {
                   width: { xs: '100%', sm: 'auto' }
                 }}
               >
-                {isSubmitting ? 'JOINING...' : 'JOIN THE WAITLIST'}
+                {isSubmitting ? 'JOINING...' : '🚀 TRY IT FREE'}
               </Button>
             </Box>
           </Box>
