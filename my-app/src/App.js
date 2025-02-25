@@ -18,6 +18,12 @@ import logo2 from './assets/logo_bottom.png';
 import iphone2 from './assets/iphone2.png';
 import banner from './assets/banner.png';
 import banner2 from './assets/banner3.png'
+import leigh from './assets/Leigh.png';
+import bg from './assets/bg.png';
+import mark from './assets/Mark.png';
+import JaneQuote from './assets/LeighQuote.png';
+import MarkQuote from './assets/MarkQuote.png';
+
 import { useState } from 'react';
 
 const StyledTextField = styled(TextField)({
@@ -62,6 +68,137 @@ export default function App() {
       minHeight: '100vh'
     }}>
       <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
+        {/* Hero Section with Purple Background */}
+        <Box sx={{
+          bgcolor: '#4F46E5',
+          color: 'white',
+          py: 8,
+          mb: 4,
+          backgroundImage: `url(${bg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}>
+          <Container maxWidth="xl">
+            {/* Navbar */}
+            <Box sx={{ mb: 4 }}>
+              <img
+                src={logo}
+                alt="Stimma Logo"
+                style={{
+                  width: '200px',
+                  height: 'auto',
+                }}
+              />
+            </Box>
+
+            {/* Rest of hero content */}
+            <Grid container spacing={4} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <Typography
+                  variant="h1"
+                  fontWeight="bold"
+                  sx={{
+                    fontSize: { xs: '3rem', md: '4.5rem' },
+                    lineHeight: 1.1,
+                    mb: 3
+                  }}
+                >
+                  You're paying too much!
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    mb: 4,
+                    maxWidth: '600px'
+                  }}
+                >
+                  Stimma calls your internet service provider and negotiates a better rate on your monthly bill. You sit back, relax, and enjoy hundreds in annual savings.
+                </Typography>
+                <Button
+                  variant="contained"
+                  onClick={() => handleSubmit(email)}
+                  sx={{
+                    bgcolor: '#FFD700',
+                    color: '#000',
+                    borderRadius: '8px',
+                    px: 4,
+                    py: 1.5,
+                    '&:hover': {
+                      bgcolor: '#FFE44D'
+                    }
+                  }}
+                >
+                  Get Started
+                </Button>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Box sx={{ position: 'relative' }}>
+                  <Box sx={{
+                    position: 'absolute',
+                    right: 0,
+                    top: '-30px',
+                    zIndex: 2
+                  }}>
+                    <Box sx={{
+                      bgcolor: 'white',
+                      borderRadius: '12px',
+                      p: 2,
+                      mb: 2,
+                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 2
+                    }}>
+                      <img
+                        src={leigh}
+                        alt="Customer"
+                        style={{
+                          width: '60px',
+                          height: '60px',
+                          borderRadius: '50%'
+                        }}
+                      />
+                      <Box>
+                        <Typography variant="subtitle1">Leigh Ann</Typography>
+                        <Typography variant="body1" color="primary">
+                          Saved $380 per year on her Spectrum bills
+                        </Typography>
+                        <Box sx={{ color: '#FFD700' }}>★★★★★</Box>
+                      </Box>
+                    </Box>
+                    <Box sx={{
+                      bgcolor: 'white',
+                      borderRadius: '12px',
+                      p: 2,
+                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 2
+                    }}>
+                      <img
+                        src={mark}
+                        alt="Customer"
+                        style={{
+                          width: '60px',
+                          height: '60px',
+                          borderRadius: '50%'
+                        }}
+                      />
+                      <Box>
+                        <Typography variant="subtitle1">Mark</Typography>
+                        <Typography variant="body1" color="primary">
+                          Saved $300 per year on his Xfinity bills
+                        </Typography>
+                        <Box sx={{ color: '#FFD700' }}>★★★★★</Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+
         {/* Main content section */}
         <Container maxWidth="xl">
           <Box display="flex" justifyContent="space-between" alignItems="center" py={2} px={{ xs: 0, md: 4 }}>
