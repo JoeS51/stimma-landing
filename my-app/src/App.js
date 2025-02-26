@@ -101,7 +101,9 @@ export default function App() {
               />
             </Box>
 
-            <Grid container spacing={4} alignItems="center">
+            <Grid container spacing={4} alignItems="center" sx={{
+              mt: { xs: 0, md: -15 }  // Added negative margin-top for desktop
+            }}>
               <Grid item xs={12} md={6}>
                 <Typography
                   variant="h1"
@@ -110,7 +112,7 @@ export default function App() {
                     fontSize: { xs: '3.5rem', md: '6rem' },
                     lineHeight: 1,
                     mb: { xs: 7, md: 10 },
-                    mt: { xs: 2, md: 12 },
+                    mt: { xs: 2, md: -4 },
                     ml: { xs: 0, md: 5 },
                     color: 'white',
                     position: 'relative',
@@ -131,7 +133,7 @@ export default function App() {
                 <Typography
                   variant="h6"
                   sx={{
-                    mb: { xs: 9, md: 10 },
+                    mb: { xs: 7, md: 10 },
                     ml: { xs: 0, md: 5 },
                     maxWidth: '600px',
                     fontSize: { xs: '1.1rem', md: '1.25rem' },
@@ -152,6 +154,7 @@ export default function App() {
                     borderRadius: '8px',
                     px: 4,
                     ml: { xs: 0, md: 5 },
+                    mb: { xs: -4, md: 0 },
                     py: 1.5,
                     fontSize: '1rem',
                     textTransform: 'uppercase',
@@ -171,48 +174,86 @@ export default function App() {
                   mt: { xs: 2, md: 0 },
                   px: { xs: 1, md: 0 }
                 }}>
+                  {/* Mobile View */}
                   <Box sx={{
-                    display: 'flex',
+                    display: { xs: 'flex', md: 'none' },
                     flexDirection: 'column',
                     alignItems: 'center',
-                    gap: { xs: 0, md: 8 }
+                    gap: 2
                   }}>
-                    {/* Leigh's section */}
+                    <img
+                      src={LeighQuote}
+                      alt="Customer Quote"
+                      style={{
+                        width: '100%',
+                        maxWidth: '600px',
+                        height: 'auto',
+                      }}
+                    />
+                    <img
+                      src={leigh}
+                      alt="Customer"
+                      style={{
+                        width: '150px',
+                        height: '150px',
+                        borderRadius: '50%',
+                        marginTop: '-100px',
+                      }}
+                    />
+                  </Box>
+
+                  {/* Desktop View */}
+                  <Box sx={{
+                    display: { xs: 'none', md: 'flex' },
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 0
+                  }}>
                     <Box sx={{
+                      position: 'relative',
                       display: 'flex',
-                      flexDirection: 'column',
                       alignItems: 'center',
-                      width: '100%',
-                      mt: { xs: -2, md: 0 }
+                      gap: 0,
+                      justifyContent: 'center',
+                      mt: 12
                     }}>
-                      <img
-                        src={LeighQuote}
-                        alt="Customer Quote"
-                        style={{
-                          width: '100%',
-                          maxWidth: '600px',
-                          height: 'auto',
-                        }}
-                      />
                       <img
                         src={leigh}
                         alt="Customer"
                         style={{
-                          width: '150px',
-                          height: '150px',
+                          width: '250px',
+                          height: '250px',
                           borderRadius: '50%',
-                          marginTop: '-100px',
+                          marginRight: '-50px',
+                          position: 'relative',
+                          zIndex: 1,
+                          transform: 'translateY(-60px)',
+                        }}
+                      />
+                      <img
+                        src={LeighQuote}
+                        alt="Customer Quote"
+                        style={{
+                          width: '600px',
+                          height: 'auto',
                         }}
                       />
                     </Box>
 
-                    {/* Mark's section - hidden on mobile */}
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{
+                      position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0,
+                      justifyContent: 'center',
+                      mt: -8,
+                      ml: -24
+                    }}>
                       <img
                         src={MarkQuote}
                         alt="Customer Quote"
                         style={{
-                          width: '600px',
+                          width: '700px',
                           height: 'auto',
                         }}
                       />
@@ -220,10 +261,13 @@ export default function App() {
                         src={mark}
                         alt="Customer"
                         style={{
-                          width: '200px',
-                          height: '200px',
+                          width: '250px',
+                          height: '250px',
                           borderRadius: '50%',
-                          marginTop: '20px'
+                          marginLeft: '-50px',
+                          position: 'relative',
+                          zIndex: 1,
+                          transform: 'translateY(-60px)',
                         }}
                       />
                     </Box>
