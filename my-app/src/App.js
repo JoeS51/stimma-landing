@@ -21,10 +21,11 @@ import banner2 from './assets/banner3.png'
 import leigh from './assets/Leigh.png';
 import bg from './assets/bg.png';
 import mark from './assets/Mark.png';
-import JaneQuote from './assets/LeighQuote.png';
+import LeighQuote from './assets/LeighQuote.png';
 import MarkQuote from './assets/MarkQuote.png';
+import phone from './assets/HalfPhone.png';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -37,6 +38,7 @@ const StyledTextField = styled(TextField)({
 export default function App() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const emailInputRef = useRef(null);
 
   const handleSubmit = async (emailValue) => {
     if (!emailValue || isSubmitting) return;
@@ -72,35 +74,56 @@ export default function App() {
         <Box sx={{
           bgcolor: '#4F46E5',
           color: 'white',
-          py: 8,
+          py: { xs: 4, md: 8 },
           mb: 4,
           backgroundImage: `url(${bg})`,
-          backgroundSize: 'cover',
+          width: '100%',
+          minHeight: '90vh',
           backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          overflow: 'hidden',
         }}>
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" sx={{ px: { xs: 2, md: 3 } }}>
             {/* Navbar */}
-            <Box sx={{ mb: 4 }}>
+            <Box sx={{
+              mb: { xs: 2, md: 4 },
+              mt: { xs: 0, md: -3 },
+              ml: { xs: 0, md: 5 }
+            }}>
               <img
-                src={logo}
+                src={logo2}
                 alt="Stimma Logo"
                 style={{
-                  width: '200px',
+                  width: '250px',
                   height: 'auto',
                 }}
               />
             </Box>
 
-            {/* Rest of hero content */}
             <Grid container spacing={4} alignItems="center">
               <Grid item xs={12} md={6}>
                 <Typography
                   variant="h1"
                   fontWeight="bold"
                   sx={{
-                    fontSize: { xs: '3rem', md: '4.5rem' },
-                    lineHeight: 1.1,
-                    mb: 3
+                    fontSize: { xs: '3.5rem', md: '6rem' },
+                    lineHeight: 1,
+                    mb: { xs: 7, md: 10 },
+                    mt: { xs: 2, md: 12 },
+                    ml: { xs: 0, md: 5 },
+                    color: 'white',
+                    position: 'relative',
+                    display: 'inline-block',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '-30px',
+                      left: 0,
+                      width: '140px',
+                      height: '4px',
+                      backgroundColor: 'rgb(104, 185, 239)',
+                    }
                   }}
                 >
                   You're paying too much!
@@ -108,89 +131,101 @@ export default function App() {
                 <Typography
                   variant="h6"
                   sx={{
-                    mb: 4,
-                    maxWidth: '600px'
+                    mb: { xs: 9, md: 10 },
+                    ml: { xs: 0, md: 5 },
+                    maxWidth: '600px',
+                    fontSize: { xs: '1.1rem', md: '1.25rem' },
+                    lineHeight: 1.5,
+                    color: 'white'
                   }}
                 >
                   Stimma calls your internet service provider and negotiates a better rate on your monthly bill. You sit back, relax, and enjoy hundreds in annual savings.
                 </Typography>
                 <Button
                   variant="contained"
-                  onClick={() => handleSubmit(email)}
+                  onClick={() => {
+                    emailInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }}
                   sx={{
                     bgcolor: '#FFD700',
                     color: '#000',
                     borderRadius: '8px',
                     px: 4,
+                    ml: { xs: 0, md: 5 },
                     py: 1.5,
+                    fontSize: '1rem',
+                    textTransform: 'uppercase',
+                    fontWeight: 'bold',
                     '&:hover': {
                       bgcolor: '#FFE44D'
                     }
                   }}
                 >
-                  Get Started
+                  GET STARTED
                 </Button>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Box sx={{ position: 'relative' }}>
+                <Box sx={{
+                  position: 'relative',
+                  height: 'auto',
+                  mt: { xs: 2, md: 0 },
+                  px: { xs: 1, md: 0 }
+                }}>
                   <Box sx={{
-                    position: 'absolute',
-                    right: 0,
-                    top: '-30px',
-                    zIndex: 2
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: { xs: 0, md: 8 }
                   }}>
+                    {/* Leigh's section */}
                     <Box sx={{
-                      bgcolor: 'white',
-                      borderRadius: '12px',
-                      p: 2,
-                      mb: 2,
-                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
                       display: 'flex',
+                      flexDirection: 'column',
                       alignItems: 'center',
-                      gap: 2
+                      width: '100%',
+                      mt: { xs: -2, md: 0 }
                     }}>
+                      <img
+                        src={LeighQuote}
+                        alt="Customer Quote"
+                        style={{
+                          width: '100%',
+                          maxWidth: '600px',
+                          height: 'auto',
+                        }}
+                      />
                       <img
                         src={leigh}
                         alt="Customer"
                         style={{
-                          width: '60px',
-                          height: '60px',
-                          borderRadius: '50%'
+                          width: '150px',
+                          height: '150px',
+                          borderRadius: '50%',
+                          marginTop: '-100px',
                         }}
                       />
-                      <Box>
-                        <Typography variant="subtitle1">Leigh Ann</Typography>
-                        <Typography variant="body1" color="primary">
-                          Saved $380 per year on her Spectrum bills
-                        </Typography>
-                        <Box sx={{ color: '#FFD700' }}>★★★★★</Box>
-                      </Box>
                     </Box>
-                    <Box sx={{
-                      bgcolor: 'white',
-                      borderRadius: '12px',
-                      p: 2,
-                      boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 2
-                    }}>
+
+                    {/* Mark's section - hidden on mobile */}
+                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                      <img
+                        src={MarkQuote}
+                        alt="Customer Quote"
+                        style={{
+                          width: '600px',
+                          height: 'auto',
+                        }}
+                      />
                       <img
                         src={mark}
                         alt="Customer"
                         style={{
-                          width: '60px',
-                          height: '60px',
-                          borderRadius: '50%'
+                          width: '200px',
+                          height: '200px',
+                          borderRadius: '50%',
+                          marginTop: '20px'
                         }}
                       />
-                      <Box>
-                        <Typography variant="subtitle1">Mark</Typography>
-                        <Typography variant="body1" color="primary">
-                          Saved $300 per year on his Xfinity bills
-                        </Typography>
-                        <Box sx={{ color: '#FFD700' }}>★★★★★</Box>
-                      </Box>
                     </Box>
                   </Box>
                 </Box>
@@ -200,67 +235,148 @@ export default function App() {
         </Box>
 
         {/* Main content section */}
-        <Container maxWidth="xl">
-          <Box display="flex" justifyContent="space-between" alignItems="center" py={2} px={{ xs: 0, md: 4 }}>
-            <img
-              src={logo}
-              alt="Stimma Logo"
-              style={{
-                width: '300px',
-                height: 'auto',
-                marginLeft: { xs: '0', md: 'inherit' }
-              }}
-              sx={{
-                display: { xs: 'none', sm: 'block' }
-              }}
-            />
-          </Box>
+        <Container maxWidth="xl" sx={{ mt: 20, mb: 15 }}>
+          {/* How It Works section */}
+          <Typography
+            variant="h2"
+            textAlign="center"
+            fontWeight="bold"
+            sx={{ mb: 2 }}
+          >
+            How It Works
+          </Typography>
+
+          <Typography
+            variant="h5"
+            textAlign="center"
+            sx={{
+              mb: 15,
+              color: 'text.secondary',
+              maxWidth: '800px',
+              mx: 'auto'
+            }}
+          >
+            Who knew dealing with your internet provider could be SO easy?
+          </Typography>
+
+          <Grid container spacing={4} justifyContent="center">
+            {[
+              {
+                number: '1',
+                title: 'Grab a copy of your bill',
+                description: 'Take a picture, take a screenshot, download a PDF—whatever works.'
+              },
+              {
+                number: '2',
+                title: 'Upload securely to Stimma',
+                description: 'Our system is secure and encrypted, and we\'ll never share your information.'
+              },
+              {
+                number: '3',
+                title: 'Stimma calls your provider',
+                description: 'Don\'t worry—we never downgrade your service level!'
+              },
+              {
+                number: '4',
+                title: 'Enjoy the savings!',
+                description: 'Once the negotiation is done, we\'ll text you the good news.'
+              }
+            ].map((step, index) => (
+              <Grid item xs={12} md={3} key={index}>
+                <Box
+                  sx={{
+                    textAlign: 'center',
+                    transform: 'translateY(0)',
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-10px)'
+                    }
+                  }}
+                >
+                  <Typography
+                    variant="h1"
+                    sx={{
+                      color: '#4F46E5',
+                      fontWeight: 'bold',
+                      mb: 2,
+                      fontSize: '3.5rem'
+                    }}
+                  >
+                    {step.number}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: 'bold',
+                      mb: 2
+                    }}
+                  >
+                    {step.title}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: 'text.secondary',
+                      maxWidth: '250px',
+                      mx: 'auto'
+                    }}
+                  >
+                    {step.description}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+
+          <Typography
+            variant="h6"
+            textAlign="center"
+            sx={{
+              mt: 15,
+              color: 'text.secondary',
+              maxWidth: '800px',
+              mx: 'auto'
+            }}
+          >
+            That's it. Whenever you need help with another bill negotiation, we'll be here.
+          </Typography>
         </Container>
 
-        <Container maxWidth="xl" sx={{ mt: -2 }}>
-          {/* Hero section */}
-          <Grid container spacing={4} alignItems="flex-start">
-            <Grid item xs={12} md={6} sx={{ pl: { xs: 2, md: 4 }, pr: { xs: 2 } }}>
+        {/* Try it free section */}
+        <Container maxWidth="xl" sx={{ mt: 0, mb: 15 }}>
+          <Grid container spacing={4} alignItems="center">
+            <Grid item xs={12} md={6}>
               <Typography
                 variant="h2"
                 fontWeight="bold"
-                gutterBottom
                 sx={{
-                  fontSize: { xs: '2.5rem', md: '4.5rem' },
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.02em',
-                  mt: { xs: 2, md: 8 },
-                  pl: { xs: 0, md: 4 },
-                  color: '#1E2A37'
+                  fontSize: { xs: '2.5rem', md: '4rem' },
+                  lineHeight: 1.2,
+                  mb: 3,
+                  ml: 5,
                 }}
               >
-                Lower your <br></br>monthly bills <br></br> without lifting a finger
+                Try it FREE for a limited time
               </Typography>
               <Typography
-                variant="body1"
-                color="text.secondary"
-                paragraph
+                variant="h6"
                 sx={{
-                  fontSize: '1.25rem',
-                  mt: 10,
                   mb: 4,
-                  pl: { xs: 0, md: 5 }
+                  maxWidth: '500px',
+                  color: 'text.secondary',
+                  ml: 5,
                 }}
               >
-                We'll call your internet service provider and negotiate a better rate.
-                You sit back, relax, and enjoy over <Typography component="span" color="primary" sx={{ fontWeight: 'bold' }}>$500</Typography> in annual savings.
+                We are offering our service to beta users for free! Enter your email address below to get started.
               </Typography>
 
-              <Box display="flex" gap={1} mt={4} sx={{
-                pl: { xs: 0, md: 4 },
-                flexDirection: { xs: 'column', sm: 'row' }
-              }}>
+              <Box sx={{ display: 'flex', gap: 1, maxWidth: '600px', ml: 5 }}>
                 <StyledTextField
                   placeholder="Email Address"
                   variant="outlined"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  sx={{ width: { xs: '100%', sm: '60%' } }}
+                  ref={emailInputRef}
                 />
                 <Button
                   variant="contained"
@@ -271,29 +387,31 @@ export default function App() {
                     height: '56px',
                     whiteSpace: 'nowrap',
                     px: 4,
-                    bgcolor: '#1E2A37',
+                    bgcolor: '#CBD5E1',
+                    color: '#1E2A37',
                     '&:hover': {
-                      bgcolor: '#2c3e50'
+                      bgcolor: '#94A3B8'
                     },
-                    width: { xs: '100%', sm: 'auto' },
-                    mb: { xs: 10, sm: 0 }
+                    fontWeight: 'bold'
                   }}
                 >
-                  {isSubmitting ? 'JOINING...' : '🚀 TRY IT FREE'}
+                  🚀 TRY IT FREE
                 </Button>
               </Box>
             </Grid>
+
             <Grid item xs={12} md={6}>
-              <Box sx={{ position: 'relative', mb: -16, display: { xs: 'none', sm: 'block' } }}>
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
                 <img
-                  src={iphone2}
-                  alt="iPhone App Demo"
+                  src={phone}
+                  alt="App Screenshot"
                   style={{
-                    width: '100%',
-                    maxWidth: '500px',
-                    height: 'auto',
-                    display: 'block',
-                    margin: '0 auto'
+                    maxWidth: '60%',
+                    height: 'auto'
                   }}
                 />
               </Box>
@@ -301,8 +419,9 @@ export default function App() {
           </Grid>
         </Container>
 
+        {/* Features section */}
         <Container maxWidth="xl" sx={{ mt: 0, mb: 15 }}>
-          {/* Features section */}
+          {/* Why Try Stimma section content */}
           <Typography
             variant="h3"
             textAlign="center"
@@ -411,88 +530,6 @@ export default function App() {
               </Grid>
             ))}
           </Grid>
-        </Container>
-
-        <Box sx={{
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          mb: 15,
-          mt: 20
-        }}>
-          <img
-            src={banner2}
-            alt="Banner"
-            style={{
-              width: '100%',
-              height: 'auto',
-            }}
-          />
-          <Box sx={{
-            position: 'absolute',
-            top: '80%',
-            left: '30%',
-            transform: 'translate(-50%, -50%)',
-            width: '100%',
-            maxWidth: '800px',
-            px: 2,
-            display: { xs: 'none', sm: 'block' }
-          }}>
-            <Box display="flex" gap={1} sx={{
-              flexDirection: { xs: 'column', sm: 'row' }
-            }}>
-              <StyledTextField
-                placeholder="Email Address"
-                variant="outlined"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                sx={{ flex: 1 }}
-              />
-              <Button
-                variant="contained"
-                onClick={() => handleSubmit(email)}
-                disabled={isSubmitting}
-                sx={{
-                  borderRadius: '30px',
-                  height: '56px',
-                  whiteSpace: 'nowrap',
-                  px: 4,
-                  bgcolor: '#1E2A37',
-                  '&:hover': {
-                    bgcolor: '#2c3e50'
-                  },
-                  width: { xs: '100%', sm: 'auto' }
-                }}
-              >
-                {isSubmitting ? 'JOINING...' : '🚀 TRY IT FREE'}
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-
-        <Container maxWidth="xl" sx={{ mb: 15 }}>
-          {/* Testimonial section */}
-          <Box sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            bgcolor: '#F8FAFC',
-            borderRadius: '12px',
-            overflow: 'hidden',
-            maxWidth: '900px',
-            mx: 'auto'
-          }}>
-            <img
-              src={testimonial}
-              alt="Customer Testimonial"
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block'
-              }}
-            />
-          </Box>
         </Container>
       </Container>
 
