@@ -24,6 +24,7 @@ import mark from './assets/Mark.png';
 import LeighQuote from './assets/LeighQuote.png';
 import MarkQuote from './assets/MarkQuote.png';
 import phone from './assets/HalfPhone.png';
+import new_logo from './assets/new_logo.png';
 
 import { useState, useRef } from 'react';
 
@@ -67,7 +68,9 @@ export default function App() {
     <Box sx={{
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '100vh'
+      minHeight: '100vh',
+      overflowX: 'hidden',
+      position: 'relative',
     }}>
       <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
         {/* Hero Section with Purple Background */}
@@ -88,11 +91,11 @@ export default function App() {
             {/* Navbar */}
             <Box sx={{
               mb: { xs: 2, md: 4 },
-              mt: { xs: 0, md: -3 },
-              ml: { xs: 0, md: 5 }
+              mt: { xs: -6, md: -8 },
+              ml: { xs: -5, md: -4 }
             }}>
               <img
-                src={logo2}
+                src={new_logo}
                 alt="Stimma Logo"
                 style={{
                   width: '250px',
@@ -593,7 +596,7 @@ export default function App() {
             gap: 4
           }}>
             <img
-              src={logo2}
+              src={new_logo}
               alt="Stimma Logo"
               style={{
                 width: '300px',

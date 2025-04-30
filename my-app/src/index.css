@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+  height: 100%;
+  /* Prevent overscroll bounce */
+  overscroll-behavior: none;
 }
 
 code {
