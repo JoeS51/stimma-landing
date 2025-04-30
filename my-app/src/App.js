@@ -92,13 +92,13 @@ export default function App() {
             <Box sx={{
               mb: { xs: 2, md: 4 },
               mt: { xs: -6, md: -8 },
-              ml: { xs: -5, md: -4 }
+              ml: { xs: -7, md: -2 }
             }}>
               <img
                 src={new_logo}
                 alt="Stimma Logo"
                 style={{
-                  width: '250px',
+                  width: '300px',
                   height: 'auto',
                 }}
               />
