@@ -8,6 +8,7 @@ import {
   Card,
   CardContent,
   styled,
+  keyframes,
 } from '@mui/material';
 import icon1 from './assets/Icon.png';
 import icon2 from './assets/Icon2.png';
@@ -27,6 +28,26 @@ import phone from './assets/HalfPhone.png';
 import new_logo from './assets/new_logo.png';
 
 import { useState, useRef } from 'react';
+
+const pulseEffect = keyframes`
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(144, 238, 144, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+`;
+
+const AnimatedTypography = styled(Typography)(({ theme }) => ({
+  animation: `${pulseEffect} 2s ease-in-out infinite`,
+  display: 'inline-block',
+}));
 
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
@@ -108,31 +129,33 @@ export default function App() {
               mt: { xs: 0, md: -15 }  // Added negative margin-top for desktop
             }}>
               <Grid item xs={12} md={6}>
-                <Typography
-                  variant="h1"
-                  fontWeight="bold"
-                  sx={{
-                    fontSize: { xs: '3.5rem', md: '6rem' },
-                    lineHeight: 1,
-                    mb: { xs: 7, md: 10 },
-                    mt: { xs: 2, md: -4 },
-                    ml: { xs: 0, md: 5 },
-                    color: 'white',
-                    position: 'relative',
-                    display: 'inline-block',
-                    '&::after': {
-                      content: '""',
+                <Box sx={{ position: 'relative' }}>
+                  <AnimatedTypography
+                    variant="h1"
+                    fontWeight="bold"
+                    sx={{
+                      fontSize: { xs: '3.5rem', md: '6rem' },
+                      lineHeight: 1,
+                      mb: { xs: 7, md: 10 },
+                      mt: { xs: 2, md: -4 },
+                      ml: { xs: 0, md: 5 },
+                      color: 'white',
+                      position: 'relative',
+                    }}
+                  >
+                    You're paying too much!
+                  </AnimatedTypography>
+                  <Box
+                    sx={{
                       position: 'absolute',
-                      bottom: '-30px',
-                      left: 0,
+                      bottom: { xs: '30px', md: '35px' },
+                      left: { xs: 0, md: '40px' },
                       width: '140px',
                       height: '4px',
                       backgroundColor: 'rgb(104, 185, 239)',
-                    }
-                  }}
-                >
-                  You're paying too much!
-                </Typography>
+                    }}
+                  />
+                </Box>
                 <Typography
                   variant="h6"
                   sx={{
