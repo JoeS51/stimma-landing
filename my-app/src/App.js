@@ -143,7 +143,7 @@ export default function App() {
                       position: 'relative',
                     }}
                   >
-                    You're paying too much!
+                    You're paying  too much!
                   </AnimatedTypography>
                   <Box
                     sx={{
@@ -152,7 +152,7 @@ export default function App() {
                       left: { xs: 0, md: '40px' },
                       width: '140px',
                       height: '4px',
-                      backgroundColor: 'rgb(104, 185, 239)',
+                      backgroundColor: 'rgb(255, 255, 255)',
                     }}
                   />
                 </Box>
