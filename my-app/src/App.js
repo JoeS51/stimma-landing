@@ -143,7 +143,7 @@ export default function App() {
                     variant="h1"
                     fontWeight="bold"
                     sx={{
-                      fontSize: { xs: '3.5rem', md: '6rem' },
+                      fontSize: { xs: '3.35rem', md: '5.75rem' },
                       lineHeight: 1,
                       mb: { xs: 7, md: 10 },
                       mt: { xs: 2, md: -4 },
