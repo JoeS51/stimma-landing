@@ -57,6 +57,16 @@ const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     borderRadius: '8px',
     backgroundColor: 'white',
+    '& fieldset': {
+      borderColor: 'rgba(0, 0, 0, 0.23)',
+    },
+    '&:hover fieldset': {
+      borderColor: 'rgba(0, 0, 0, 0.38)',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#62E8AB',
+      borderWidth: 2,
+    },
   },
   width: '100%',
 });
@@ -375,7 +385,7 @@ export default function App() {
                   <Typography
                     variant="h1"
                     sx={{
-                      color: '#4F46E5',
+                      color: '#064173',
                       fontWeight: 'bold',
                       mb: 2,
                       fontSize: '3.5rem'
