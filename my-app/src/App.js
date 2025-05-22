@@ -9,6 +9,10 @@ import {
   CardContent,
   styled,
   keyframes,
+  Dialog,
+  DialogContent,
+  Fade,
+  IconButton,
 } from '@mui/material';
 import icon1 from './assets/Icon.png';
 import icon2 from './assets/Icon2.png';
@@ -60,12 +64,15 @@ const StyledTextField = styled(TextField)({
 export default function App() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [openThankYou, setOpenThankYou] = useState(false);
   const emailInputRef = useRef(null);
 
   const handleSubmit = async (emailValue) => {
     if (!emailValue || isSubmitting) return;
 
     setIsSubmitting(true);
+    setOpenThankYou(true);
+    
     try {
       await fetch('https://script.google.com/macros/s/AKfycbwrfQaaeyBizYJ8Nce5lVFMDen5U8ESLgbJ8VVFeGZSPgbCsePo6U-JhaB4mzQmJS6JGw/exec', {
         method: 'POST',
@@ -76,13 +83,16 @@ export default function App() {
         body: JSON.stringify({ email: emailValue }),
       });
 
-      alert('Thank you for joining the waitlist!');
       setEmail('');
     } catch (error) {
-      alert('Sorry, something went wrong. Please try again later.');
+      console.error('Error submitting email:', error);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleCloseThankYou = () => {
+    setOpenThankYou(false);
   };
 
   return (
@@ -96,11 +106,10 @@ export default function App() {
       <Container maxWidth={false} disableGutters sx={{ flex: 1 }}>
         {/* Hero Section with Purple Background */}
         <Box sx={{
-          bgcolor: '#4F46E5',
+          bgcolor: '#064173',
           color: 'white',
           py: { xs: 4, md: 8 },
           mb: 4,
-          backgroundImage: `url(${bg})`,
           width: '100%',
           minHeight: '90vh',
           backgroundPosition: 'center',
@@ -663,6 +672,95 @@ export default function App() {
           </Box>
         </Container>
       </Box>
+
+      {/* Clean Thank You Dialog */}
+      <Dialog
+        open={openThankYou}
+        onClose={handleCloseThankYou}
+        PaperProps={{
+          sx: {
+            borderRadius: '12px',
+            boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+            maxWidth: '450px',
+            margin: '16px',
+            overflow: 'visible'
+          }
+        }}
+        TransitionComponent={Fade}
+        TransitionProps={{ timeout: 250 }}
+      >
+        <DialogContent sx={{ 
+          p: 0, 
+          position: 'relative',
+          overflow: 'visible'
+        }}>
+          <IconButton
+            onClick={handleCloseThankYou}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: 'rgba(0,0,0,0.5)',
+              bgcolor: 'rgba(255,255,255,0.9)',
+              '&:hover': { bgcolor: 'white' },
+              zIndex: 2,
+              width: 30,
+              height: 30
+            }}
+          >
+            ✕
+          </IconButton>
+          
+          <Box sx={{
+            p: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center'
+          }}>
+            <Box sx={{
+              width: 70,
+              height: 70,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              mb: 3,
+              bgcolor: 'rgba(6, 65, 115, 0.1)',
+              color: '#064173',
+              fontSize: '2rem',
+            }}>
+              ✓
+            </Box>
+            
+            <Typography variant="h5" fontWeight="bold" mb={2}>
+              You're on the list!
+            </Typography>
+            
+            <Typography variant="body1" color="text.secondary" mb={4}>
+              Thank you for joining our waitlist. We'll notify you as soon as Stimma is ready to help you save money.
+            </Typography>
+            
+            <Button
+              variant="contained"
+              onClick={handleCloseThankYou}
+              sx={{
+                bgcolor: '#064173',
+                borderRadius: '8px',
+                py: 1.5,
+                px: 4,
+                '&:hover': {
+                  bgcolor: '#053259',
+                },
+                fontWeight: 'bold',
+                boxShadow: 'none'
+              }}
+            >
+              Got it
+            </Button>
+          </Box>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 }
